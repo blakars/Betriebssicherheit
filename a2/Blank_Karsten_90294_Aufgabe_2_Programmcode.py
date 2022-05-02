@@ -56,9 +56,12 @@ class EVENT:
         return self.mu/(self.la+self.mu)
 
 def zeichnen(liste):
-    g=gv.Graph()
+    g=gv.Graph(format='png')
     for e in liste:
-        g.node(e.name)
+        if str(type(e))=="<class '__main__.EVENT'>":
+            g.node(e.name,shape="circle")
+        else:
+            g.node(e.name,shape="rectangle")
         for child in e.nodes:
             g.edge(e.name,child.name)
     return g
@@ -81,8 +84,20 @@ B.add(E4)
 TOP.add(A)
 TOP.add(B)
 
+"""A = EVENT("A",1,1)
+C = EVENT("C",1/20,2)
+D = EVENT("D",1/20,1)
+B = ANDNODE("B")
+B.add(C)
+B.add(D)
+TOP = ORNODE("TOP")
+TOP.add(A)
+TOP.add(B)"""
+
 avail = TOP.availability()
 
 print(avail)
 
-zeichnen([E1,E2,E3,E4,A,B,C,TOP])
+g = zeichnen([E1,E2,E3,E4,A,B,C,TOP])
+
+g.view()
