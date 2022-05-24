@@ -165,8 +165,8 @@ M1.addTransition(T22)
 M1.addTransition(T33)
 M1.addTransition(T44)
 
-#g1=M1.zeichnen()
-#g1.view()
+g1=M1.zeichnen()
+g1.view()
 
 res1 = M1.probability(87600)
 print(res1)
@@ -179,8 +179,8 @@ M2.addTransition(T002)
 M2.addTransition(T012)
 M2.addTransition(T112)
 
-#g2 = M2.zeichnen()
-#g2.view()
+g2 = M2.zeichnen()
+g2.view()
 
 Result = M2.probability(87600)
 print(Result)
